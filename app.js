@@ -14,7 +14,7 @@ const PORT = config.get('port') || 5000
 const MONGO_URI = config.get('mongoUri')
 
 
-async function start(){
+async function start() {
     try {
         await mongoose.connect(MONGO_URI, {
             useNewUrlParser: true,

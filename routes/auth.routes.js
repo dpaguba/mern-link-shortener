@@ -1,18 +1,19 @@
 // conn router from express
-const {Router} = require('express')
+const { Router } = require('express')
 const bcrypt = require('bcryptjs');
+const { check, validationResult } = require('express-validator');
 const User = require('../models/User')
 // created router
 const router = Router()
 
 // /api/auth
-router.post('/register', async (req, res)=>{
+router.post('/register', async (req, res) => {
     try {
-        const {email, password} = req.body
+        const { email, password } = req.body
 
-        const candidate = await User.findOne({email : email})
+        const candidate = await User.findOne({ email: email })
 
-        if(candidate){
+        if (candidate) {
             return res.status(400).json({
                 message: `User with email : ${email} is already exist.`
             })
@@ -20,7 +21,7 @@ router.post('/register', async (req, res)=>{
 
         const hashedPassword = await bcrypt.hash(password, 12)
         const user = new User({
-            email : email,
+            email: email,
             password: hashedPassword
         })
 
@@ -40,8 +41,8 @@ router.post('/register', async (req, res)=>{
 })
 
 // /api/auth
-router.post('/login', async (req, res)=>{
-    
+router.post('/login', async (req, res) => {
+
 })
 
 
