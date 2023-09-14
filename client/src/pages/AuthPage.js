@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/images/logo.png"
 import { useHttp } from "../hooks/http.hook";
+import { useMessage } from "../hooks/message.hook";
 
 export const AuthPage = () => {
-    const { loading, request } = useHttp()
-
+    const message = useMessage()
+    const { loading, request, error, clearError } = useHttp()
     const [form, setForm] = useState({
         email: "",
         password: "",
     })
+
+    useEffect((error) => {
+        message(error)
+        clearError()
+    }, [error, message, clearError])
+
+    // useEffect(() => {
+    //     window.M.updateTextFields()
+    //   }, [])
 
     const changeHandler = event => {
         setForm({
@@ -18,11 +28,11 @@ export const AuthPage = () => {
 
     const registerHandler = async () => {
         try {
-            const data = await request('/api/auth/register', "POST", { ...form })
-            console.log("Data:", data);
-        } catch (e) {
-        }
-    }
+          const data = await request('/api/auth/register', 'POST', {...form})
+          message(data.message)
+        } catch (e) {}
+      }
+      
 
     return (
         <div className="row">
@@ -38,6 +48,7 @@ export const AuthPage = () => {
                             id="email"
                             name="email"
                             className="blue-input"
+                            value={form.email}
                             onChange={changeHandler}
                         />
                         <label htmlFor="email">Email</label>
@@ -48,6 +59,7 @@ export const AuthPage = () => {
                             id="password"
                             name="password"
                             className="blue-input"
+                            value={form.password}
                             onChange={changeHandler}
                         />
                         <label htmlFor="password">Password</label>
