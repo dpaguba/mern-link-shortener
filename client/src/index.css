@@ -1,0 +1,97 @@
+@import "~materialize-css/dist/css/materialize.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+3&display=swap");
+
+:root {
+  --bg-auth: #f7f4fd;
+  --bg: #3c6cfe;
+  --buttons-and-labels: #2196f3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  max-width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-family: "Source Sans 3", sans-serif;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+body {
+  background-color: var(--bg);
+}
+
+.wrapper {
+  padding: 160px 160px;
+}
+
+.row {
+  display: flex;
+  width: 100vh;
+  height: 50vh;
+}
+
+.auth {
+  width: 35%;
+  border: 0px;
+  border-radius: 3% 0 0 3%;
+  background-color: var(--bg-auth);
+  display: flex;
+}
+
+.image {
+  width: 65%;
+  border: 0px;
+  border-radius: 0% 3% 3% 0%;
+  background: url("/src/assets/images/urlShortener.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.sign-in {
+  width: 100%;
+  margin: 5vh 2vw;
+  text-align: center;
+}
+
+.logo {
+  display: inline-block;
+  margin: 2vh auto;
+  height: 50px;
+  width: 50px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.input-field input.blue-input[type="text"]:focus + label,
+.input-field input.blue-input[type="password"]:focus + label {
+  color: var(--buttons-and-labels);
+}
+
+.input-field input.blue-input[type="text"]:focus,
+.input-field input.blue-input[type="password"]:focus {
+  border-bottom: 1px solid var(--buttons-and-labels);
+  box-shadow: 0 1px 0 0 var(--buttons-and-labels);
+}
+
+.btn {
+  width: 100%;
+  background-color: var(--buttons-and-labels);
+}
+
+.btn:hover {
+  background-color: var(--buttons-and-labels);
+  filter: brightness(110%);
+}
+
+.btn:focus {
+  background-color: var(--buttons-and-labels);
+  filter: brightness(95%);
+}
