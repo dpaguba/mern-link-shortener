@@ -6,6 +6,9 @@ const mongoose = require('mongoose');
 // server
 const app = express()
 
+// routes
+app.use('/api/auth', require('./routes/auth.routes'))
+
 // constants
 const PORT = config.get('port') || 5000
 const MONGO_URI = config.get('mongoUri')
