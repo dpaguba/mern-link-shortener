@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 // server
 const app = express()
 
+app.use(express.json({extended: true}))
+
 // routes
 app.use('/api/auth', require('./routes/auth.routes'))
 
